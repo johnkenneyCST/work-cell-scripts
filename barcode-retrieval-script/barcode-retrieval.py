@@ -17,11 +17,17 @@ def makeRequest():
     #             print(f"\t{kk, vv}")
 
     for key, value in req.json().items():
-        # print(key, value)
         for items in value:
-            # print(type(items))
-            print("\n")
-            ST_Issue_Entry(id=items["ID"])
+            ST_Issue_Entry(id=items["ID"], 
+                           issue_num=items["ISSUENUM"], 
+                           mono_proj_num=items["MONOCLONALPROJECT"],
+                           animal_num=items["ANIMAL"],
+                           num_of_samples=items["NUMBEROFSAMPLES"],
+                           peptide_names=items["PEPTIDENAMES"],
+                           tfw_barcode=items["PLATEBARCODE"],
+                           eap_barcode=items["EAPBARCODE"],
+                           peptide_reservoir=items["PEPTIDERESERVOIR"] or "")
+
             
 
 
@@ -32,15 +38,27 @@ class ST_Issue_Entry:
                  issue_num,
                  mono_proj_num,
                  animal_num,
-                 num_of_of_samples,
+                 num_of_samples,
+                 peptide_names,
                  tfw_barcode,
                  eap_barcode,
                  peptide_reservoir) -> None:
         
         self.id = id
         self.issue_num = issue_num
-        self.mono_proj_num = mono_proj_num 
-        self.animal_num
+        self.mono_proj_num = mono_proj_num.split(" ")[0]
+        self.animal_num = animal_num
+        self.num_of_samples = num_of_samples
+        self.peptide_names = peptide_names.split("<")[0].strip()
+        self.tfw_barcode = tfw_barcode
+        self.eap_barcode = eap_barcode
+        self.peptide_reservoir_barcode = peptide_reservoir
+
+        # print(f"""id: {self.id}\n\tissue num: {self.issue_num}\n\tmono project num: {self.mono_proj_num}\n\t
+        # animal num: {self.animal_num}\n\tnum samples: {self.num_of_samples}\n\tpeptide names {self.peptide_names}
+        # \n\ttfw barcode {self.tfw_barcode}\n\teap barcode: {self.eap_barcode}\n\tpeptide reservoir barcode: {self.peptide_reservoir_barcode}""")
+
+
 
 if __name__ == "__main__":
     makeRequest()
