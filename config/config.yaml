@@ -1,0 +1,3 @@
+barcode-retrieval:
+  jira-scpd-details-url-dev01: http://alb-labsys-microservices02.cellsignal.com:361/jirascpdsetdetails/issueNum/
+  jira-scpd-details-url-dev04: http://alb-labsys-microservices02.cellsignal.com:476/jirascpdsetdetails/issueNum/
