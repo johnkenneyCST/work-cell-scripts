@@ -1,0 +1,1 @@
+Start-Process -FilePath ".\dist\labware-validation.exe" -ArgumentList "--st_issues", "ST-797", "--labware_file", "C:\Users\jkenney\Downloads\test-carousel.csv", "--validation_day", "1"
