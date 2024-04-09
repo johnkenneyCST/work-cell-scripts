@@ -115,6 +115,6 @@ if __name__ == "__main__":
 
     jira_barcodes = make_labware_list_from_jira()
     print(jira_barcodes)
-    # compare_list()
+    compare_list()
     
 
