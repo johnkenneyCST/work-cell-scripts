@@ -25,6 +25,7 @@ parser.add_argument("--validation_day", type=int, required=True, choices=[1,2])
 args = parser.parse_args()
 st_issues = args.st_issues.split(" ")
 # test cmd line: python barcode-retrieval-script/barcode-retrieval.py --st_issues "ST-797 ST-796" --labware_file "C:\Users\jkenney\Downloads\test-carousel.csv"
+# test cmd line: python ELISA-SCPD/labware-validation-script/labware-validation.py --st_issues "ST-797 ST-796" --labware_file "C:\Users\jkenney\Downloads\test-carousel.csv"
 st_issues_dict = {}
 
 def makeRequest():
@@ -41,7 +42,7 @@ def makeRequest():
     except Exception as e:
         sys.exit(e)
     for st_iss in st_issues:
-        req = requests.get(url=configs['barcode-retrieval']['jira-scpd-details-url-dev04']+st_iss)
+        req = requests.get(url=configs['barcode-retrieval']['jira-scpd-details-url-test03']+st_iss)
         for key, value in req.json().items():
             for items in value:
                 st_issues_dict[st_iss].append(ST_Issue_Entry(id=items["ID"], 
