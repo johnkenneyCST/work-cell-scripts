@@ -2,3 +2,4 @@ barcode-retrieval:
   jira-scpd-details-url-dev01: http://alb-labsys-microservices02.cellsignal.com:361/jirascpdsetdetails/issueNum/
   jira-scpd-details-url-dev04: http://alb-labsys-microservices02.cellsignal.com:476/jirascpdsetdetails/issueNum/
   jira-scpd-details-url-test03: http://alb-labsys-microservices01.cellsignal.com:331/jirascpdsetdetails/issueNum/
+  jira-scpd-details-url-prod: http://labsysservices.cellsignal.com:98/jirascpdsetdetails/issueNum/

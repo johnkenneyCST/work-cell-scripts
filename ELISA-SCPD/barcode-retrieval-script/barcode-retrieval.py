@@ -38,7 +38,7 @@ def makeRequest():
     except Exception as e:
         exit(e)
     for st_iss in st_issues:
-        req = requests.get(url=configs['barcode-retrieval']['jira-scpd-details-url-dev04']+st_iss)
+        req = requests.get(url=configs['barcode-retrieval']['jira-scpd-details-url-prod']+st_iss)
         for key, value in req.json().items():
             for items in value:
                 st_issues_dict[st_iss].append(ST_Issue_Entry(id=items["ID"], 
