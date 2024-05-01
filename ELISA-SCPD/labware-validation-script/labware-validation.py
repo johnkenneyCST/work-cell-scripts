@@ -57,7 +57,11 @@ def makeRequest():
 
 def parse_labware_file():
     df = pd.read_csv(args.labware_file)
-    labware_on_workcell = df["Barcode"].values.tolist()
+    ## Exclude any labware that includes tips
+    condition = df["Labware"] != 'Tips'
+    tmp = df["Barcode"].values.tolist()
+
+    labware_on_workcell = df.loc[condition, "Barcode"].values.tolist()
     return labware_on_workcell
 
 def make_labware_list_from_jira():
@@ -106,8 +110,16 @@ class ST_Issue_Entry:
 def compare_list():
     final_list = list(set(work_cell_barcodes) - set(jira_barcodes))
     if len(final_list) != 0:
-        print("Discrepency in lists")
-        print(final_list)
+        print("A discrepency was found when comparing labware files. ")
+        for i in final_list:
+            for j in work_cell_barcodes:
+                if i == j:
+                    print(f"Work Cell Scan Found {i}, was not found in JIRA.")
+
+        for i in final_list:
+            for k in jira_barcodes:
+                if i == k:
+                    print(f"JIRA query found {i}, was not scanned in on work cell.")
         sys.exit(400)
     else:
         print("Labware Validated !")
@@ -116,9 +128,7 @@ def compare_list():
 if __name__ == "__main__":
     makeRequest()
     work_cell_barcodes = parse_labware_file()
-
     jira_barcodes = make_labware_list_from_jira()
-    print(jira_barcodes)
     compare_list()
     
 
