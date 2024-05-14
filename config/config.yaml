@@ -3,3 +3,9 @@ barcode-retrieval:
   jira-scpd-details-url-dev04: http://alb-labsys-microservices02.cellsignal.com:476/jirascpdsetdetails/issueNum/
   jira-scpd-details-url-test03: http://alb-labsys-microservices01.cellsignal.com:331/jirascpdsetdetails/issueNum/
   jira-scpd-details-url-prod: http://labsysservices.cellsignal.com:98/jirascpdsetdetails/issueNum/
+
+peptide-link:
+  AUTHORIZE_URI: "https://peptide-search-api-test.cellsignal.com/login"
+  AUTHORIZE-USER: "john.kenney@cellsignal.com"
+  AUTHORIZE_PWD: "@Gull$Cla$$Of2023"
+  SEARCH_BY_MONO_PROJECT_NUM: "https://peptide-search-api-test.cellsignal.com/search-by-mono-project-number?mono_project_num"
